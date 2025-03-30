@@ -4,28 +4,13 @@ import AddTask from "./AddTask";
 import tasksReducer from "./TasksReducer";
 import { useTasksContext } from "./TasksProvider";
 
-let nextId = 3;
-// const initialTasks = [
-//   { id: 0, text: "Go To toilet", done: true },
-//   { id: 1, text: "Drink Water", done: false },
-//   { id: 2, text: "Take Shower", done: false },
-// ];
-
 export default function TaskApp() {
-  //const [tasks, setTasks] = useState(initialTasks)
+  // Get the values of state and dispatch from the global context provided by custom hook
   const [state, dispatch] = useTasksContext();
 
   let nextId = 3;
 
   function handleAddTask(text) {
-    // setTasks([
-    //   ...tasks,
-    //   {
-    //     id: nextId++,
-    //     text: text,
-    //     done: false,
-    //   },
-    // ]);
     dispatch({
       type: "added",
       id: nextId++,
@@ -34,15 +19,6 @@ export default function TaskApp() {
   }
 
   function handleChangeTask(task) {
-    // setTasks(
-    //   tasks.map((t) => {
-    //     if (t.id === task.id) {
-    //       return task;
-    //     } else {
-    //       return t;
-    //     }
-    //   })
-    // );dispatch({
     dispatch({
       type: "changed",
       task: task,
@@ -50,7 +26,6 @@ export default function TaskApp() {
   }
 
   function handleDeleteTask(taskId) {
-    // setTasks(tasks.filter((t) => t.id !== taskId));
     dispatch({
       type: "deleted",
       id: taskId,
